@@ -34,6 +34,7 @@ Serial.begin(9600); // Starts the serial communication
 
 void loop() {
   lightLevel = analogRead(opAmpPin);
+  Serial.println(lightLevel);
   if(lightLevel > lightThreshold){
     digitalWrite(trigPin, LOW);
     delayMicroseconds(2);

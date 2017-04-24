@@ -12,7 +12,7 @@ void setup(){
     Serial.println("SD fail");
   }
 
-  char file[] = "81.wav";
+  char file[] = "81.wav"; //change file name in sd card to 81
   tmrpcm.setVolume(6);
   tmrpcm.play(file);
 }

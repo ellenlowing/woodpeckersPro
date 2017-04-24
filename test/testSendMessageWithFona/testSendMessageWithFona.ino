@@ -53,8 +53,8 @@ void setup() {
     Serial.print("Module IMEI: "); Serial.println(imei);
   }
 
-  char sendto[21] = "13478281699";
-  char message[141] = "Alert: Woodpeckers Detected";
+  char sendto[21] = "19788067578";
+  char message[141] = "Battery level is low";
   fona.sendSMS(sendto, message);
 }
 

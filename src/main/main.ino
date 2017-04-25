@@ -1,5 +1,6 @@
 #include "Adafruit_FONA.h"
 #include <NewPing.h>
+#include <Wire.h>
 
 
 #define FONA_RX 2
@@ -42,11 +43,13 @@ const int speakerPin = 6;
 
 void setup(){
   pinMode(opAmpPin, INPUT);
+  Wire.begin();
   Serial.begin(115200);
 }
 
 void loop(){
   time = millis()/60000;
+  Wire.beginTransmission(8);
   if(isDayTime()){
     printTime();
     if(time >= 10){
@@ -182,7 +185,8 @@ void sendText(){
 
 
 void playSound(){
-  //tone(9,2000, soundDuration);
-  //delay(soundDuration);
+  Wire.write(1);
+  Wire.endTransmission();
+  delay(soundDuration);
 }
 

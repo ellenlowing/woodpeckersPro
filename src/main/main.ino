@@ -134,47 +134,8 @@ boolean birdDetected_new(){
   Serial.print(distance4); // Convert ping time to distance and print result (0 = outside set distance range, no ping echo)
   Serial.println("cm");
   return detected1 | detected2 | detected3 | detected4;
-  
- 
+}
 
-  
-}
-/*
-boolean birdDetected(){
-  digitalWrite(trigPin1, LOW);
-  digitalWrite(trigPin2, LOW);
-  delayMicroseconds(2);
-    
-  // Sets the trigPin on HIGH state for 10 micro seconds
-  digitalWrite(trigPin1, HIGH);
-  digitalWrite(trigPin2, HIGH);
-  delayMicroseconds(10);
-  digitalWrite(trigPin1, LOW);
-  digitalWrite(trigPin2, LOW);
-    
-  // Reads the echoPin, returns the sound wave travel time in microseconds
-  long duration1 = pulseIn(echoPin1, HIGH);
-  long duration2 = pulseIn(echoPin2, HIGH);
-    
-  // Calculating the distance
-  int distance1= duration1*0.034/2;
-  int distance2= duration2*0.034/2;
-  Serial.print("distance1: ");
-  Serial.println(distance1);
-  Serial.print("distance2: ");
-  Serial.println(distance2);
-  const int distanceThreshold = 200;
-  boolean detected1 = false;
-  boolean detected2 = false;
-  if(distance1 != 0 && distance1 <= distanceThreshold){
-    detected1 = true;
-  }
-  if(distance2 != 0 && distance2 <= distanceThreshold){
-    detected2 = true;
-  }
-  return detected1 | detected2;
-}
-*/
 
 void sendText(){
   while(!Serial);
@@ -222,6 +183,6 @@ void sendText(){
 
 void playSound(){
   //tone(9,2000, soundDuration);
-  delay(soundDuration);
+  //delay(soundDuration);
 }
 

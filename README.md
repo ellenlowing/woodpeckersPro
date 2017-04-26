@@ -6,8 +6,11 @@ It also has the following minor functionalities: automatically turns off at nigh
 - 2 Arduinos: control overall operation of device
 - Sparkfun MP3 player shield: facilitate mp3 playing
 - Adafruit FONA 808 Shield: notify house owner when battery level is low
+- SIM card and GSM Antenna: enable SMS messaging
+- Lipoly battery: charge FONA 808 shield
 - RC rechargeable battery: power Arduinos and other circuit components
 - Solar panel: charge battery with sunlight
-- Lightdiode: enable automatic switch off at night
+- Lightdiode and op amp: enable automatic switch off at night
 - Ultrasonic sensors: sense presence of woodpeckers
 - Speakers: deter woodpeckers with predator call
+- Resistors: act as sensor for voltage

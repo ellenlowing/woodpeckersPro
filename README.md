@@ -9,6 +9,5 @@ It also has the following minor functionalities: automatically turns off at nigh
 - RC rechargeable battery: power Arduinos and other circuit components
 - Solar panel: charge battery with sunlight
 - Lightdiode: enable automatic switch off at night
-- Ultrasonic sensor: sense presence of woodpeckers
+- Ultrasonic sensors: sense presence of woodpeckers
 - Speakers: deter woodpeckers with predator call
-- 

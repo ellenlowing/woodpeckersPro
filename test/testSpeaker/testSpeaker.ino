@@ -110,8 +110,13 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
- 
-    play();
+    if(birdDetected()){
+      play();
+    }
+}
+
+boolean birdDetected(){
+  
 }
 
 void play(){

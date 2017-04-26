@@ -37,12 +37,11 @@ unsigned long start_t;
 unsigned long end_t;
 const int soundDuration = 7000; // the duration of the wav file is 7 seconds
 
-
 const int opAmpPin = 0; //analog
-const int speakerPin = 6;
 
 void setup(){
   pinMode(opAmpPin, INPUT);
+  pinMode(A1, INPUT);
   Wire.begin();
   Serial.begin(115200);
 }
@@ -51,6 +50,9 @@ void loop(){
   time = millis()/60000;
   Wire.beginTransmission(8);
   if(isDayTime()){
+    if(!voltageHigh()){
+      sendText();
+    }
     printTime();
     if(time >= 10){
       //reset time
@@ -142,18 +144,20 @@ boolean birdDetected_new(){
 
 void sendText(){
   while(!Serial);
-  Serial.begin(115200);
+  /*
   Serial.println(F("FONA basic test"));
   Serial.println(F("Initializing....(May take 3 seconds)"));
-
+  */
     fonaSerial->begin(4800);
   if (! fona.begin(*fonaSerial)) {
     Serial.println(F("Couldn't find FONA"));
     while (1);
   }
   type = fona.type();
+  /*
   Serial.println(F("FONA is OK"));
   Serial.print(F("Found "));
+  
   switch (type) {
     case FONA800L:
       Serial.println(F("FONA 800L")); break;
@@ -170,19 +174,32 @@ void sendText(){
     default: 
       Serial.println(F("???")); break;
   }
+  */
   
   // Print module IMEI number.
   char imei[16] = {0}; // MUST use a 16 character buffer for IMEI!
   uint8_t imeiLen = fona.getIMEI(imei);
+  /*
   if (imeiLen > 0) {
     Serial.print("Module IMEI: "); Serial.println(imei);
   }
+  */
 
   char sendto[21] = "19788067578";
-  char message[141] = "Battery level is low";
+  char message[141] = "Battery level is low!!";
   fona.sendSMS(sendto, message);
 }
 
+boolean voltageHigh(){
+  int sensorValue = analogRead(A1);
+  const float voltageThreshold = 9.20*0.7;
+  float voltage = sensorValue * (5.00/1023.00) *2;
+  if(voltage < voltageThreshold){
+    return false;
+  }else{
+    return true;
+  }
+}
 
 void playSound(){
   Wire.write(1);

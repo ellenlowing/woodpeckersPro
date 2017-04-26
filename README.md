@@ -17,6 +17,16 @@ It also has the following minor functionalities: automatically turns off at nigh
 
 # Programming
 There are 2 folders - src and test - that respectively contain source code for both Arduinos and individual tests for all components. 
+## src
 - main: upload to main Arduino
 - main_2: upload to second Arduino (the one with only MP3 player shield)
+## test
+- testDeterWoodpeckers: test if lightdiode sends correct signal to speaker
+- testLightDiode: test if lightdiode functions
+- testFona: test if FONA shield functions
+- testShowVoltage: test if Arduino senses voltage correctly (need multimeter to check accuracy)
+- testSpeaker: test if MP3 shield and SFEMP3Shield library work
+- testUltrasonicSensor: test if ultrasonic sensor functions
+- testArduinoCommunication: test if main Arduino sends correct signal to second Arduino
+- testNewPingLib: test if NewPing Library enhances functioning of ultrasonic sensor
 

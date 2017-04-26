@@ -14,3 +14,9 @@ It also has the following minor functionalities: automatically turns off at nigh
 - Ultrasonic sensors: sense presence of woodpeckers
 - Speakers: deter woodpeckers with predator call
 - Resistors: act as sensor for voltage
+
+# Programming
+There are 2 folders - src and test - that respectively contain source code for both Arduinos and individual tests for all components. 
+- main: upload to main Arduino
+- main_2: upload to second Arduino (the one with only MP3 player shield)
+

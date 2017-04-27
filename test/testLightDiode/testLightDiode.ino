@@ -21,8 +21,6 @@ void loop() {
     Serial.println("There is not enough light");
   }else{
     Serial.println(lightLevel);
-    tone(speakerPin, 2000, 500);
-    delay(1000);
+    //tone(speakerPin, 2000, 500);
   }
-  delay(1000);
 }

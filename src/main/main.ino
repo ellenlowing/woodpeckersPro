@@ -53,7 +53,8 @@ void loop(){
     if(!voltageHigh()){
       sendText();
     }
-    printTime();
+    Serial.print("time ");
+    Serial.println(time);
     if(time >= 10){
       //reset time
     }else{
@@ -86,7 +87,7 @@ void loop(){
 
 boolean isDayTime(){
   int lightLevel = 0;
-  const int lightThreshold = 5; 
+  const int lightThreshold = 2; 
   lightLevel = analogRead(opAmpPin);
   if(lightLevel>lightThreshold){
     return true;

@@ -1,5 +1,5 @@
-const int trigPin = 9; //digital
-const int echoPin = 10; //digital
+const int trigPin = 13; //digital
+const int echoPin = 12; //digital
 
 void setup() {
 pinMode(trigPin, OUTPUT); // Sets the trigPin as an Output

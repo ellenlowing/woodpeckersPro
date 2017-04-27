@@ -113,6 +113,7 @@ void setup() {
 void receiveEvent(int howMany){
     int detected = Wire.read();
     if(detected == 1){
+      Serial.println("playing");
       play();
     }
 }

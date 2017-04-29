@@ -6,6 +6,7 @@ It also has the following minor functionalities: automatically turns off at nigh
 Below is a reference to the circuit and bill of materials used to support WoodpeckersPro.
 ## Circuit Diagram
 ![alt text](https://github.com/ellenlowing/woodpeckersPro/blob/master/assets/EK210%20Woodpecker%20circuit.png)
+
 ###Remark:
 - FONA 808 Shield is not shown in the diagram. Simply put the shield on top of the main Arduino (the one without MP3 player shield) 
 - Resistor used in series with solar panel depends on the voltage of solar panel and RC battery

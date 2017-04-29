@@ -5,7 +5,11 @@ It also has the following minor functionalities: automatically turns off at nigh
 # Circuitry
 ## Circuit Diagram
 ![alt text](https://github.com/ellenlowing/woodpeckersPro/blob/master/assets/EK210%20Woodpecker%20circuit.png)
-
+Remark:
+- FONA 808 Shield is not shown in the diagram. Simply put the shield on top of the main Arduino (the one without MP3 player shield) 
+- Resistor used in series with solar panel depends on the voltage of solar panel and RC battery
+- Resistors used to indicate voltage have to be of the same value
+- Plug in the speaker's audio jack to the MP3 player shield
 ## Bill of Materials
 - 2 Arduinos: control overall operation of device
 - Sparkfun MP3 player shield: facilitate mp3 playing
@@ -14,7 +18,7 @@ It also has the following minor functionalities: automatically turns off at nigh
 - Lipoly battery: charge FONA 808 shield
 - RC rechargeable battery: power Arduinos and other circuit components
 - Solar panel: charge battery with sunlight
-- Lightdiode and op amp: enable automatic switch off at night
+- Lightdiode and LMC6482 Op Amp: enable automatic switch off at night
 - Ultrasonic sensors: sense presence of woodpeckers
 - Speakers: deter woodpeckers with predator call
 - Resistors: act as sensor for voltage

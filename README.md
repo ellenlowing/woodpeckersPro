@@ -19,7 +19,7 @@ Below is a reference to the circuit and bill of materials used to support Woodpe
 - Lipoly battery: charge FONA 808 shield
 - RC rechargeable battery: power Arduinos and other circuit components
 - Solar panel: charge battery with sunlight
-- Lightdiode and LMC6482 Op Amp: enable automatic switch off at night
+- Photodiode and LMC6482 Op Amp: enable automatic switch off at night
 - Ultrasonic sensors: sense presence of woodpeckers
 - Speakers: deter woodpeckers with predator call
 - Resistors: act as sensor for voltage
@@ -31,11 +31,11 @@ There are 2 folders - src and test - that respectively contain source code for b
 - main_2: upload to second Arduino (the one with only MP3 player shield)
 ## test
 - testDeterWoodpeckers: test if lightdiode sends correct signal to speaker
-- testLightDiode: test if lightdiode functions
+- testPhotoDiode: test if photodiode functions
 - testFona: test if FONA shield functions
 - testShowVoltage: test if Arduino senses voltage correctly (need multimeter to check accuracy)
 - testSpeaker: test if MP3 shield and SFEMP3Shield library work
 - testUltrasonicSensor: test if ultrasonic sensor functions
 - testArduinoCommunication: test if main Arduino sends correct signal to second Arduino
 - testNewPingLib: test if NewPing Library enhances functioning of ultrasonic sensor
-
+- testMain: using 1-minute interval instead of 10-minute to test the whole main code

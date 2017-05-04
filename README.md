@@ -39,3 +39,14 @@ There are 2 folders - src and test - that respectively contain source code for b
 - testArduinoCommunication: test if main Arduino sends correct signal to second Arduino
 - testNewPingLib: test if NewPing Library enhances functioning of ultrasonic sensor
 - testMain: using 1-minute interval instead of 10-minute to test the whole main code
+
+# Design of Prototype
+We designed a rectangular box made of acrylic to hold the speakers, battery and circuit of WoodpeckersPro. Small holes on the side and front are designed to fit ultrasonic sensors' signal generator.
+
+## Front
+(https://github.com/ellenlowing/woodpeckersPro/blob/master/assets/front.jpg "Front of prototype")
+
+## Side
+(https://github.com/ellenlowing/woodpeckersPro/blob/master/assets/side.jpg "Side of prototype")
+
+

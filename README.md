@@ -44,9 +44,9 @@ There are 2 folders - src and test - that respectively contain source code for b
 We designed a rectangular box made of acrylic to hold the speakers, battery and circuit of WoodpeckersPro. Small holes on the side and front are designed to fit ultrasonic sensors' signal generator.
 
 ## Front
-(https://github.com/ellenlowing/woodpeckersPro/blob/master/assets/front.jpg "Front of prototype")
+![alt text](https://github.com/ellenlowing/woodpeckersPro/blob/master/assets/front.jpg "Front of prototype")
 
 ## Side
-(https://github.com/ellenlowing/woodpeckersPro/blob/master/assets/side.jpg "Side of prototype")
+![alt text](https://github.com/ellenlowing/woodpeckersPro/blob/master/assets/side.jpg "Side of prototype")
 
 

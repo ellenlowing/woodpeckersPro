@@ -2,11 +2,12 @@
 #include <NewPing.h>
 #include <Wire.h>
 
-
+// Pins used by FONA shield
 #define FONA_RX 2
 #define FONA_TX 3
 #define FONA_RST 4
 
+// Pins used by ultrasonic sensors
 #define TRIGGER_PIN1  13  // Arduino pin tied to trigger pin on the ultrasonic sensor.
 #define ECHO_PIN1     12  // Arduino pin tied to echo pin on the ultrasonic sensor.
 #define TRIGGER_PIN2  11  // Arduino pin tied to trigger pin on the ultrasonic sensor.
@@ -17,67 +18,62 @@
 #define ECHO_PIN4     6  // Arduino pin tied to echo pin on the ultrasonic sensor.
 #define MAX_DISTANCE 200 // Maximum distance we want to ping for (in centimeters). Maximum sensor distance is rated at 400-500cm.
 
-NewPing sonar(TRIGGER_PIN1, ECHO_PIN1, MAX_DISTANCE); // NewPing setup of pins and maximum distance.
+// NewPing setup of pins and maximum distance.
+NewPing sonar(TRIGGER_PIN1, ECHO_PIN1, MAX_DISTANCE); 
 NewPing sonar2(TRIGGER_PIN2, ECHO_PIN2, MAX_DISTANCE);
 NewPing sonar3(TRIGGER_PIN3, ECHO_PIN3, MAX_DISTANCE);
 NewPing sonar4(TRIGGER_PIN4, ECHO_PIN4, MAX_DISTANCE);
 
+// Setup for using FONA shield and library
 #include <SoftwareSerial.h>
 SoftwareSerial fonaSS = SoftwareSerial(FONA_TX, FONA_RX);
 SoftwareSerial *fonaSerial = &fonaSS;
-
 Adafruit_FONA fona = Adafruit_FONA(FONA_RST);
-
 uint8_t readline(char *buff, uint8_t maxbuff, uint16_t timeout = 0);
-
 uint8_t type;
 
+// Variables used for timing
 unsigned long time;
-unsigned long start_t;
-unsigned long end_t;
+unsigned long currentTime = 0;
 const int soundDuration = 7000; // the duration of the wav file is 7 seconds
 
-const int opAmpPin = 0; //analog
-
 void setup(){
-  pinMode(opAmpPin, INPUT);
-  pinMode(A1, INPUT);
-  Wire.begin();
+  pinMode(A0, INPUT); // A0: opAmpPin
+  pinMode(A1, INPUT); // A1: connectArduino2Pin
+  Wire.begin(); // begin using Wire.h library for transmission to second Arduino
   Serial.begin(115200);
 }
 
 void loop(){
   time = millis()/60000;
-  Wire.beginTransmission(8);
+  unsigned long tenMinutes = 10;
+  unsigned long eightMinutes = 8;
+  
   if(isDayTime()){
     if(!voltageHigh()){
       sendText();
     }
     Serial.print("time ");
     Serial.println(time);
-    if(time >= 10){
-      //reset time
+    if((time-currentTime) >= tenMinutes){
+      currentTime = time; // reset time
     }else{
-      if(time < 8){
+      if((time-currentTime) < eightMinutes){
         if(birdDetected_new()){
           Serial.println("detected");
           playSound();
         }else{
           Serial.println("not detected");
         }//end if birdDetected
-      }else{
-        long totalDurationPlayed = 0;
-        const long twoMinsInMS = 120000;
-        while(totalDurationPlayed < twoMinsInMS ){
+      }else if((time - currentTime) >= eightMinutes){
+        unsigned long totalDurationPlayed = 0;
+        unsigned const long twoMinutes = 2;
+        while(totalDurationPlayed < twoMinutes ){
           playSound();
-          totalDurationPlayed = totalDurationPlayed + (long)soundDuration;
-        }//end while(totalDurationPlayed < 2minsInMS)
+          totalDurationPlayed = totalDurationPlayed + (unsigned long)soundDuration;
+        }//end while(totalDurationPlayed < twoMinutes)
       }//end if-else (time < 8)
     }//end if-else (time >= 10)
-    //printTime();
-    //prints time since program started
-    // wait a second so as not to send massive amounts of data
-    //delay(1000);
   }else{
     //noTone(speakerPin);
     //digitalWrite(trigPin1, LOW);
@@ -88,7 +84,7 @@ void loop(){
 boolean isDayTime(){
   int lightLevel = 0;
   const int lightThreshold = 2; 
-  lightLevel = analogRead(opAmpPin);
+  lightLevel = analogRead(A0);
   if(lightLevel>lightThreshold){
     return true;
   }else{
@@ -186,7 +182,7 @@ void sendText(){
   }
   */
 
-  char sendto[21] = "19788067578";
+  char sendto[21] = "11234567890"; //phone number with country code
   char message[141] = "Battery level is low!!";
   fona.sendSMS(sendto, message);
 }
@@ -203,6 +199,7 @@ boolean voltageHigh(){
 }
 
 void playSound(){
+  Wire.beginTransmission(8);
   Wire.write(1);
   Wire.endTransmission();
   delay(soundDuration);

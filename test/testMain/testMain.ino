@@ -33,8 +33,6 @@ uint8_t readline(char *buff, uint8_t maxbuff, uint16_t timeout = 0);
 uint8_t type;
 
 unsigned long time;
-unsigned long start_t;
-unsigned long end_t;
 const int soundDuration = 7000; // the duration of the wav file is 7 seconds
 
 const int opAmpPin = 0; //analog

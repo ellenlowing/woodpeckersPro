@@ -190,7 +190,7 @@ void sendText(){
   }
   */
 
-  char sendto[21] = "19788067578";
+  char sendto[21] = "11234567890";
   char message[141] = "Battery level is low!!";
   fona.sendSMS(sendto, message);
 }
